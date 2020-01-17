@@ -1,0 +1,68 @@
+﻿@using Newtonsoft.Json;
+@using Microsoft.AspNetCore.Http;
+@model Note
+@{
+	ViewData["Title"] = "EditNote";
+}
+
+<div class="text-center">
+	<h1 class="display-4">EditNote</h1>
+	<br />
+</div>
+
+@{
+	var UserInfoAsString = Context.Session.GetString("SessionUser");
+	UserInfo userInfo;
+	<br />
+
+	@if (UserInfoAsString == null)
+	{
+		<div class="text-center">
+			To edit your notes, please <a asp-controller="Home" asp-action="SignIn">Sign In </a>
+		</div>
+	}
+	else
+	{
+		userInfo = JsonConvert.DeserializeObject<UserInfo>(UserInfoAsString);
+
+
+		<form asp-action="EditNote">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+			<input asp-for="Id" hidden />
+			<input asp-for="UserId" hidden value="@userInfo.UserId" />
+			<div class="container">
+				<div class="row">
+					<div class="offset-3 col-sm-2">
+						<div class="text-right">
+							<label asp-for="Title"></label>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<input asp-for="Title" class="form-control" />
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="offset-3 col-sm-2">
+						<div class="text-right">
+							<label asp-for="Memo"></label>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<textarea asp-for="Memo" class="form-control"></textarea>
+					</div>
+				</div>
+
+				<br />
+				<div class="row">
+					<div class="offset-5 form-group">
+						<input type="submit" value="Update" class="btn btn-sm btn-info" />
+						<a asp-controller="Notes" asp-action="Index" class="btn btn-sm btn-danger">Back</a>
+
+					</div>
+				</div>
+			</div>
+		</form>
+	}
+}

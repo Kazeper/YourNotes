@@ -1,0 +1,31 @@
+﻿@model Note
+@{
+	ViewData["Title"] = "DeleteNote";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+	<br/><br/>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 border border-warning rounded-lg bg-info text-white">
+				@Model.Title
+				<hr />
+				@Model.Memo
+				<br /><br />
+				<br /><br />
+			</div>
+		</div>
+	</div>
+
+	<form asp-action="DeleteNote">
+		<input type="hidden" asp-for="Id" />
+		<input type="hidden" asp-for="UserId" />
+		<input type="hidden" asp-for="Title" />
+		<input type="hidden" asp-for="Memo" />
+		<input type="submit" value="Delete" class="btn btn-danger" /> |
+		<a asp-action="Index" class="btn btn-primary">Back to List</a>
+	</form>
+</div>

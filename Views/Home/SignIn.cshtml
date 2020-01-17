@@ -1,0 +1,49 @@
+﻿@model AttempLoginData
+@{
+    ViewData["Title"] = "SignIn";
+}
+<div class="text-center">
+
+	<h1 class="display-4">Sign In</h1>
+</div>
+<br />
+<hr />
+
+<form asp-action="SignIn">
+	<div class="container">
+		@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="text-right">
+					<label asp-for="Email"></label>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<input asp-for="Email" class="form-control" />
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="text-right">
+					<label asp-for="Password"></label>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<input asp-for="Password" class="form-control" />
+			</div>
+		</div>
+		<br />
+		<div class="row">
+
+			<div class="form-group offset-2">
+				<input type="submit" value="Confirm" class="btn btn-sm btn-primary" />
+				<a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-danger">Back</a>
+			</div>
+		</div>
+
+
+	</div>
+</form>
+

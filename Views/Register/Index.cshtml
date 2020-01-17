@@ -1,0 +1,70 @@
+﻿@model User
+@{
+	ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Register </h1>
+</div>
+<br />
+<hr />
+<br />
+
+
+<form asp-action="CreateAccount">
+	<div class="container">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="text-justify text-right">
+						<label asp-for="Email"></label>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<input asp-for="Email" class="form-control" />
+				</div>
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="text-justify text-right">
+						<label asp-for="Password"></label>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<input asp-for="Password" class="form-control" />
+				</div>
+				<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="text-justify text-right">
+						<label for="ConfirmPassword">Confirm Password</label>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<input asp-for="ConfirmPassword" class="form-control" />
+				</div>
+				<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+			</div>
+		</div>
+		<br />
+
+		<div class="form-group offset-2">
+			<input type="submit" value="Create account" class="btn btn-sm btn-primary" />
+			<a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-danger">Back</a>
+		</div>
+
+	</div>
+</form>
+
+@section Scripts{
+	@{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
