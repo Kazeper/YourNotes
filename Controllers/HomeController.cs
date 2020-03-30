@@ -19,17 +19,6 @@ namespace YourNotes.Controllers
 		{
 			_db = db;
 			UserInfo = null;
-
-			//TODO ogarnąć zmianę koloru
-
-			//String[] colors =
-			//{
-			//	"white",
-			//	"red",
-			//	"green",
-			//	"Yellow"
-			//};
-			//ViewBag.color = colors;
 		}
 
 		/// <summary>
